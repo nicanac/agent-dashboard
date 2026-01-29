@@ -1,9 +1,10 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { DollarSign, RefreshCw, Briefcase, Activity, MoreVertical, ShoppingBag, AppWindow } from "lucide-react"
+import { DollarSign, RefreshCw, Briefcase, Activity, MoreVertical } from "lucide-react"
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar } from 'recharts';
+import { ActivityFeed } from "@/components/dashboard/activity-feed"
 
 const data = [
   { name: 'Jan', uv: 4000, pv: 2400, amt: 2400 },
@@ -110,33 +111,8 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          {/* List Card */}
-          <Card className="rounded-xl border-none shadow-sm">
-             <CardContent className="p-0">
-                <div className="divide-y">
-                   {[
-                     { icon: ShoppingBag, title: "Shopify eCommerce", sub: "Store", val: "$1200", subVal: "6 Projects", color: "text-emerald-500 bg-emerald-50" },
-                     { icon: AppWindow, title: "iOS Apps Development", sub: "Development", val: "$1450", subVal: "3 Projects", color: "text-blue-500 bg-blue-50" },
-                   ].map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-6 hover:bg-slate-50 transition-colors cursor-pointer">
-                         <div className="flex items-center gap-4">
-                            <div className={`h-12 w-12 rounded-lg flex items-center justify-center ${item.color}`}>
-                               <item.icon className="h-6 w-6" />
-                            </div>
-                            <div>
-                               <h4 className="font-semibold text-sm">{item.title}</h4>
-                               <p className="text-xs text-muted-foreground">{item.sub}</p>
-                            </div>
-                         </div>
-                         <div className="text-right">
-                            <h4 className="font-semibold text-sm">{item.val}</h4>
-                            <p className="text-xs text-muted-foreground">{item.subVal}</p>
-                         </div>
-                      </div>
-                   ))}
-                </div>
-             </CardContent>
-          </Card>
+          {/* Activity Feed */}
+          <ActivityFeed />
 
         </div>
 
